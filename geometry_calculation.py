@@ -134,14 +134,35 @@ def get_distance_two_point_2d(A, B):
     denom = math.sqrt((a1 - a2)*(a1 - a2) + (b1 - b2)*(b1 - b2))
     return denom
 
+def dotproduct(v1, v2):
+  return sum((a*b) for a, b in zip(v1, v2))
+def length(v):
+  return math.sqrt(dotproduct(v, v))
+def get_angle_two_vector(v1, v2):
+  return math.degrees(math.acos(dotproduct(v1, v2) / (length(v1) * length(v2))))
+
 def get_angle_two_line_3d(direction_vector_1, direction_vector_2):
     direction_vector_1 = np.array(direction_vector_1)
     direction_vector_2 = np.array(direction_vector_2)
     m1 = np.sqrt(np.power(direction_vector_1[0],2)+np.power(direction_vector_1[1],2)+np.power(direction_vector_1[2],2))
     m2 = np.sqrt(np.power(direction_vector_2[0],2)+np.power(direction_vector_2[1],2)+np.power(direction_vector_2[2],2))
-
     cosn = np.sum(direction_vector_1*direction_vector_2)/(m1*m2)
     return math.degrees(math.acos(cosn)) 
+
+def Rx(theta):
+  return np.matrix([[ 1, 0           , 0           ],
+                   [ 0, math.cos(theta),-math.sin(theta)],
+                   [ 0, math.sin(theta), math.cos(theta)]])
+  
+def Ry(theta):
+  return np.matrix([[ math.cos(theta), 0, math.sin(theta)],
+                   [ 0           , 1, 0           ],
+                   [-math.sin(theta), 0, math.cos(theta)]])
+  
+def Rz(theta):
+  return np.matrix([[ math.cos(theta), -math.sin(theta), 0 ],
+                   [ math.sin(theta), math.cos(theta) , 0 ],
+                   [ 0           , 0            , 1 ]])
 
 def get_satellite_points_of_center_2d(center_point, normal_vector_2d, distance_to_center_point):
     line_equation = (normal_vector_2d[0], normal_vector_2d[1], -(normal_vector_2d[0]*center_point[0] + normal_vector_2d[1]*center_point[1]))
