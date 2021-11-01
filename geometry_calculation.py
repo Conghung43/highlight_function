@@ -281,6 +281,10 @@ def get_image_crop_range(click_pos, frame_shape):
         sw = 1 - adjust_range*2*w/h
     return [sh,eh,sw,ew]
 
+def get_remaining_corner_parallelogram(corner_point, point_1, point_2):
+    parallelogram_centroid = np.mean([point_1, point_2], axis=0)
+    return parallelogram_centroid*2 - np.array(corner_point)
+
 # print(get_image_crop_range([0.6,0.6],[1920,1080]))
 # vector_1 = [0, 1,0]
 # vector_2 = [1, 1,0]
