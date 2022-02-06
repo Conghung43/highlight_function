@@ -1,0 +1,7 @@
+#         f =  open('dummy_data/{}.npy'.format(data_name), 'a') 
+#         np.save('dummy_data/{}.npy'.format(data_name), point_cloud)
+#         f.close()
+
+# f =  open('dummy_data/depth_map_{}.npy'.format(i), 'rb')
+# object_depth = np.load(f, allow_pickle=True)
+# point_cloud = np.load(f, allow_pickle=True)
