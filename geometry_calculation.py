@@ -285,6 +285,53 @@ def get_remaining_corner_parallelogram(corner_point, point_1, point_2):
     parallelogram_centroid = np.mean([point_1, point_2], axis=0)
     return parallelogram_centroid*2 - np.array(corner_point)
 
+def bresenham(start, end):
+
+    # Setup initial conditions
+    x1, y1 = start
+    x2, y2 = end
+    dx = x2 - x1
+    dy = y2 - y1
+    
+    # Determine how steep the line is
+    is_steep = abs(dy) > abs(dx)
+    
+    # Rotate line
+    if is_steep:
+        x1, y1 = y1, x1
+        x2, y2 = y2, x2
+    
+    # Swap start and end points if necessary and store swap state
+    swapped = False
+    if x1 > x2:
+        x1, x2 = x2, x1
+        y1, y2 = y2, y1
+        swapped = True
+    
+    # Recalculate differentials
+    dx = x2 - x1
+    dy = y2 - y1
+    
+    # Calculate error
+    error = int(dx / 2.0)
+    ystep = 1 if y1 < y2 else -1
+    
+    # Iterate over bounding box generating points between start and end
+    y = y1
+    points = []
+    for x in range(x1, x2 + 1):
+        coord = (y, x) if is_steep else (x, y)
+        points.append(coord)
+        error -= abs(dy)
+        if error < 0:
+            y += ystep
+            error += dx
+    
+    # Reverse the list if the coordinates were swapped
+    if swapped:
+        points.reverse()
+    return points
+
 # print(get_image_crop_range([0.6,0.6],[1920,1080]))
 # vector_1 = [0, 1,0]
 # vector_2 = [1, 1,0]
