@@ -332,6 +332,22 @@ def bresenham(start, end):
         points.reverse()
     return points
 
+def distance_with_vector_calculation(p, v, vector, d, direction):
+    calculate_value = v*math.sqrt(pow(d,2)/(pow(vector[0],2) + pow(vector[1],2) + pow(vector[2],2)))
+    if direction:
+        return_value = p + calculate_value
+    else:
+        return_value = p - calculate_value
+    return return_value
+
+def get_point_from_distance_with_2point_3d(corner_point,edge_point, distance, outside):
+    direction_vector = np.array(corner_point) - np.array(edge_point)
+    return_point = []
+    for index, element in enumerate(corner_point):
+        value = distance_with_vector_calculation(element, direction_vector[index], direction_vector, distance, outside)
+        return_point.append(value)
+    return return_point
+
 # print(get_image_crop_range([0.6,0.6],[1920,1080]))
 # vector_1 = [0, 1,0]
 # vector_2 = [1, 1,0]
