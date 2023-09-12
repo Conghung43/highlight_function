@@ -1,0 +1,2 @@
+remove all git on windows :
+rmdir /s /q .git
