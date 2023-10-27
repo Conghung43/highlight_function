@@ -10,4 +10,5 @@ File.WriteAllBytes("test.png", png);
 AssetDatabase.Refresh();
 
 Install package
-Newtonsoft:   https://github.com/jilleJr/Newtonsoft.Json-for-Unity.git#upm
+Newtonsoft:   
+com.unity.nuget.newtonsoft-json
