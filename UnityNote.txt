@@ -8,6 +8,7 @@ stopwatch.Stop(); long elMs = stopwatch.ElapsedMilliseconds; UnityEngine.Debug.L
 byte[] png = result.EncodeToPNG();
 File.WriteAllBytes("test.png", png);
 AssetDatabase.Refresh();
+string filePath = Path.Combine(Application.persistentDataPath, count.ToString() + ".png");
 
 Install package
 Newtonsoft:   
