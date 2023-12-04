@@ -9,6 +9,7 @@ byte[] png = result.EncodeToPNG();
 File.WriteAllBytes("test.png", png);
 AssetDatabase.Refresh();
 string filePath = Path.Combine(Application.persistentDataPath, count.ToString() + ".png");
+System.IO.File.WriteAllBytes(filePath, pngData);
 
 Install package
 Newtonsoft:   
