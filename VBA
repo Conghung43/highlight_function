@@ -1,0 +1,40 @@
+' Fit all image to pages in ppt
+
+Sub ResizeImagesOnAllPages()
+    Dim slide As slide
+
+    ' Loop through all slides in the presentation
+    For Each slide In ActivePresentation.Slides
+        ' Apply the ResizeImageToFitHeight function to each slide
+        ResizeImageToFitHeight slide
+    Next slide
+End Sub
+
+Sub ResizeImageToFitHeight(slide As slide)
+    Dim slideWidth As Single
+    Dim slideHeight As Single
+    Dim pic As Shape
+    Dim picLeft As Single
+
+    ' Get slide dimensions
+    slideWidth = ActivePresentation.PageSetup.slideWidth
+    slideHeight = ActivePresentation.PageSetup.slideHeight
+
+    ' Iterate through each shape in the current slide
+    For Each pic In slide.Shapes
+        If pic.Type = msoPicture Then
+            ' Resize the image to fit the slide height
+            pic.LockAspectRatio = msoTrue
+            If pic.Height / pic.Width > slideHeight / slideWidth Then
+                pic.Height = slideHeight
+            Else
+                pic.Width = slideWidth
+            End If
+
+            ' Center the image horizontally and vertically on the slide
+            picLeft = (slideWidth - pic.Width) / 2
+            pic.Top = (slideHeight - pic.Height) / 2
+            pic.Left = picLeft
+        End If
+    Next pic
+End Sub
