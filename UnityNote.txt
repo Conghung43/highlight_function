@@ -14,3 +14,5 @@ System.IO.File.WriteAllBytes(filePath, pngData);
 Install package
 Newtonsoft:   
 com.unity.nuget.newtonsoft-json
+
+Git: https://github.com/jilleJr/Newtonsoft.Json-for-Unity.git#upm
