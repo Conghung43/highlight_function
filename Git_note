@@ -3,3 +3,7 @@ rmdir /s /q .git
 
 
 backup after branch-filter: git reset --hard refs/original/refs/heads/Desktop
+
+
+for /r %i in (*) do if %~zi gtr 104857600 echo %~ni.%~xi >> .gitignore
+
