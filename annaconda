@@ -1,0 +1,2 @@
+macos: go to annaconda environment
+. /opt/anaconda3/bin/activate && conda activate /opt/anaconda3/envs/hanna;
