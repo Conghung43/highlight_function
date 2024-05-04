@@ -1,0 +1,3 @@
+(* prevent all app nap
+go to terminal an run *)
+defaults write NSGlobalDomain NSAppSleepDisabled -bool YES
