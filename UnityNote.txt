@@ -21,3 +21,9 @@ Git: https://github.com/jilleJr/Newtonsoft.Json-for-Unity.git#upm
 Camera setup: 
 Get high resolution camera
 m_CameraManager.subsystem.currentConfiguration = m_CameraManager.GetConfigurations(Allocator.Temp)[1];
+
+//#if UNITY_EDITOR
+//            filePath = "rgbaMat.jpg";
+//#else
+//            filePath = Path.Combine(Application.persistentDataPath, "rgbaMat.jpg");//
+//#endif
