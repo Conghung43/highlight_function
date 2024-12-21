@@ -27,3 +27,22 @@ m_CameraManager.subsystem.currentConfiguration = m_CameraManager.GetConfiguratio
 //#else
 //            filePath = Path.Combine(Application.persistentDataPath, "rgbaMat.jpg");//
 //#endif
+
+
+// Example method to save a Mat as a JPG file
+    public void SaveMatAsJPG(Mat mat, string filePath)
+    {
+        if (mat.empty())
+        {
+            Debug.LogError("The Mat is empty and cannot be saved.");
+            return;
+        }
+
+        // Encode the Mat to a byte array in JPG format
+        byte[] jpgBytes = Imgcodecs.imencode(".jpg", mat);
+
+        // Save the byte array to a file
+        File.WriteAllBytes(filePath, jpgBytes);
+
+        Debug.Log("JPG file saved to: " + filePath);
+    }
