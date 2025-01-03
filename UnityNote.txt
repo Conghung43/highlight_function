@@ -46,3 +46,17 @@ m_CameraManager.subsystem.currentConfiguration = m_CameraManager.GetConfiguratio
 
         Debug.Log("JPG file saved to: " + filePath);
     }
+// Draw rectangle file 
+            //for (int index = 0; index < newRect.Count; index++)
+            //{
+            //    Imgproc.rectangle(
+            //        mat,
+            //        newRect[index].tl(), // Top-left point
+            //        newRect[index].br(), // Bottom-right point
+            //        new Scalar(0, 255, 0, 255), // Green color in RGBA
+            //        2);
+            //}
+
+
+            //string filePath = Path.Combine(Application.persistentDataPath, "mat.jpg");//
+            //Imgcodecs.imwrite(filePath, mat);
